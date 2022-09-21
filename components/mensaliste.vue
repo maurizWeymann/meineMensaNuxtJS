@@ -4,10 +4,14 @@
     Loading ...
   </div>
   <div v-else>
-    <div v-for="mensa in mensen" :key="mensa.id">
+    <div v-for=" mensa, index in mensen " :key="mensa.id">
       <!-- do something -->
-      {{ mensa.id }} 
+      <div v-if="index <= 9">
+        {{ mensa.id }} {{ mensa.city }} {{ index }}
+      </div>     
     </div>
+    <a class="button p-3">show more</a>
+
   </div>
 </template>
 

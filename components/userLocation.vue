@@ -17,13 +17,17 @@
       </div>
       <div>
         {{ coordinates.latitude }} : {{ coordinates.longitude }}
-
+      </div>
+      <div>
+        {{ storeMensa.city }}
       </div>
     </section>
   </template>
 
   <script setup>
-    //import { ref } from '#imports'
+    import { useMensaStore } from '/stores/mensa'
+    
+    const storeMensa = useMensaStore()
 
     const coordinates = ref(
       {
@@ -32,7 +36,7 @@
       });
     
     //https://medium.com/js-dojo/vue-js-google-maps-api-getting-user-location-f22ad96115ef
-    function locatorButtonPressed() {
+    const locatorButtonPressed = () => {
       navigator.geolocation.getCurrentPosition(
         position => {
           coordinates.value.latitude = position.coords.latitude;
@@ -44,7 +48,7 @@
         error => {
           console.log(error.message);
         },
-        )  
-       
+        )     
     }
+
   </script>

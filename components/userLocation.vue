@@ -15,20 +15,36 @@
           </div>
         </form>
       </div>
+      <div>
+        {{ coordinates.latitude }} : {{ coordinates.longitude }}
+
+      </div>
     </section>
   </template>
 
   <script setup>
+    //import { ref } from '#imports'
+
+    const coordinates = ref(
+      {
+        latitude:30,
+        longitude:40
+      });
+    
     //https://medium.com/js-dojo/vue-js-google-maps-api-getting-user-location-f22ad96115ef
     function locatorButtonPressed() {
       navigator.geolocation.getCurrentPosition(
         position => {
+          coordinates.value.latitude = position.coords.latitude;
+          coordinates.value.longitude = position.coords.longitude;
+
           console.log(position.coords.latitude);
           console.log(position.coords.longitude);
         },
         error => {
           console.log(error.message);
         },
-        )   
+        )  
+       
     }
   </script>

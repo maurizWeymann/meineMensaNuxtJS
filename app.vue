@@ -1,6 +1,5 @@
 <template>
-    <div>
-        <userLocation />
-        <mensaliste />
-    </div>
+    <NuxtLayout>
+        <nuxtPage />    
+    </NuxtLayout>
 </template>

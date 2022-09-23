@@ -16,11 +16,12 @@
         </form>
       </div>
       <div>
-        {{ coordinates.latitude }} : {{ coordinates.longitude }}
+        {{ storeMensa.latitude }} : {{ storeMensa.longitude }}
       </div>
       <div>
         {{ storeMensa.city }}
       </div>
+      <button @click="storeMensa.getMensen">get my mensa</button>
     </section>
   </template>
 
@@ -28,6 +29,8 @@
     import { useMensaStore } from '/stores/mensa'
     
     const storeMensa = useMensaStore()
+
+    const address = ""
 
     const coordinates = ref(
       {
@@ -39,11 +42,8 @@
     const locatorButtonPressed = () => {
       navigator.geolocation.getCurrentPosition(
         position => {
-          coordinates.value.latitude = position.coords.latitude;
-          coordinates.value.longitude = position.coords.longitude;
-
-          console.log(position.coords.latitude);
-          console.log(position.coords.longitude);
+          storeMensa.latitude = position.coords.latitude;
+          storeMensa.longitude = position.coords.longitude;
         },
         error => {
           console.log(error.message);

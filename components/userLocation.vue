@@ -6,22 +6,23 @@
               <div class="ui right icon input large">
                 <input
                   type="text"
-                  placeholder="Enter your address"
+                  placeholder="Wo essen wir heute?"
                   v-model="address"
                   ref="autocomplete"
                 />
                 <i class="dot circle link icon" @click="locatorButtonPressed"></i>
-              </div>
-          </div>
+              
+          <input v-model.lazy="storeMensa.distance" class="input" type="number" min="1" max="10" required placeholder="Umkreis" 
+          @keyup="storeMensa.getMensen(), storeMensa.rerenderKey++ "
+ >  
+        </div>       
+        </div>
         </form>
       </div>
       <div>
         {{ storeMensa.latitude }} : {{ storeMensa.longitude }}
       </div>
-      <div>
-        {{ storeMensa.city }}
-      </div>
-      <button @click="storeMensa.getMensen">get my mensa</button>
+      <button @click="storeMensa.getMensen(), storeMensa.rerenderKey++">get my mensa</button>
     </section>
   </template>
 
@@ -31,12 +32,6 @@
     const storeMensa = useMensaStore()
 
     const address = ""
-
-    const coordinates = ref(
-      {
-        latitude:30,
-        longitude:40
-      });
     
     //https://medium.com/js-dojo/vue-js-google-maps-api-getting-user-location-f22ad96115ef
     const locatorButtonPressed = () => {
@@ -48,7 +43,7 @@
         error => {
           console.log(error.message);
         },
-        )     
+        )  
     }
 
   </script>

@@ -4,7 +4,6 @@
     <a class="navbar-item" href="https://bulma.io">
       <img src="assets\images\htw-logo.svg" width="112" height="28">
     </a>
-    {{ isShow }}
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" @click="changeShow">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
@@ -14,10 +13,8 @@
 
   <div v-if="isShow" id="navbarBasicExample" class="navbar-menu is-active">
     <div class="navbar-start">
-      <a class="navbar-item">
-        Home
-      </a>
-
+      <NuxtLink @click="changeShow" class="navbar-item" to="/">Mensa Suche</NuxtLink>
+      
       <a class="navbar-item">
         Documentation
       </a>

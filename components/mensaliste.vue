@@ -1,14 +1,10 @@
 <template>
   <div class="card p-5">
      <!-- you'll need to handle a loading state -->
-  <div v-if="pending">
-    Loading ...
-  </div>
-  <div v-else>
-    <div v-for=" mensa, index in mensen " :key="mensa.id">
+  <div >
+    <div v-for=" mensa, index in storeMensa.mensen " :key="mensa.id">
       <!-- do something -->
       <div v-if="index <= 9">
-
         <div class="card">
           <div class="card-image">
             <figure class="image is-4by3">
@@ -54,12 +50,14 @@
 
   const storeMensa = useMensaStore()
 
-  const { pending, data: mensen } = useLazyFetch(`https://openmensa.org/api/v2/canteens?near[lat]=${storeMensa.latitude}&near[lng]=${storeMensa.longitude}&near[dist]=1`)
-  watch(mensen, (newMensen) => {
-    // Because posts starts out null, you won't have access
-    // to its contents immediately, but you can watch it.
-  })
+  if(storeMensa.mensen === "" ){
+    storeMensa.getMensen()
+  }
+  
+  //  fetch(storeMensa.getMensen())
 
-  let today = new Date().toISOString().slice(0, 10)
+  //function sayHey() { console.log("hello ") }
+
+let today = new Date().toISOString().slice(0, 10)
 
 </script>

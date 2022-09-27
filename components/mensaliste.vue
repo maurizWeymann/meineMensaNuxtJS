@@ -8,8 +8,10 @@
         <div class="card">
           <div class="card-image">
             <figure class="image is-4by3">
-                <img :src= " `/mensaFotos/${mensa.id}.jpg` " 
-              onerror="this.src='/mensaFotos/40.jpg'" alt="Placeholder image"> 
+              <img :src="`assets/images/htw-logo.svg`" alt="">
+               <!--     <img :src= "`/mensaFotos/${mensa.id}.jpg`"
+              alt="Placeholder image">
+               onerror="this.src='/mensaFotos/40.jpg'"  -->
             </figure>
           </div>
           <div class="card-content">

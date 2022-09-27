@@ -1,8 +1,20 @@
-//import { defineNuxtConfig } from "nuxt";
+import { defineNuxtConfig } from "nuxt"; 
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-  modules: ['@pinia/nuxt'],
+  
+  modules: [ '@nuxtjs/pwa', '@pinia/nuxt'],
+  pwa: {
+    meta: {
+      title: 'My PWA',
+      author: 'Me',
+    },
+    manifest: {
+      name: 'Nuxt.js PWAs are so easy',
+      short_name: 'Nuxt.js PWA',
+      lang: 'en',
+    },
+  },
   meta: {
     meta: [
       { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -21,3 +33,4 @@ export default defineNuxtConfig({
   },
   css: ["assets/styles/main.scss"]
 });
+
